@@ -5,11 +5,9 @@ import java.sql.Timestamp;
 public class Leave {
 
 	private Integer leaveId;
-	private Timestamp loginTime;
-	private Timestamp logoutTime;
+	private Timestamp leaveDate;
 	private LeaveStatusEntity LeaveStatus;
 	private EmployeeEntity Employee;
-	private ManagerEntity Manager;
 	private Byte leaveCancelled;
 
 	public Integer getLeaveId() {
@@ -20,20 +18,12 @@ public class Leave {
 		this.leaveId = leaveId;
 	}
 
-	public Timestamp getLoginTime() {
-		return loginTime;
+	public Timestamp getLeaveDate() {
+		return leaveDate;
 	}
 
-	public void setLoginTime(Timestamp loginTime) {
-		this.loginTime = loginTime;
-	}
-
-	public Timestamp getLogoutTime() {
-		return logoutTime;
-	}
-
-	public void setLogoutTime(Timestamp logoutTime) {
-		this.logoutTime = logoutTime;
+	public void setLeaveDate(Timestamp leaveDate) {
+		this.leaveDate = leaveDate;
 	}
 
 	public LeaveStatusEntity getLeaveStatus() {
@@ -50,14 +40,6 @@ public class Leave {
 
 	public void setEmployee(EmployeeEntity employee) {
 		Employee = employee;
-	}
-
-	public ManagerEntity getManager() {
-		return Manager;
-	}
-
-	public void setManager(ManagerEntity manager) {
-		Manager = manager;
 	}
 
 	public Byte getLeaveCancelled() {

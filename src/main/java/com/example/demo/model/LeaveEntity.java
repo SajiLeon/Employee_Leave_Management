@@ -16,37 +16,31 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "tbl_leave_history")
-public class LeaveHistoryEntity {
+@Table(name = "tbl_leave")
+public class LeaveEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "leave_id")
 	private Integer leaveId;
 
-	@Column(name = "login_time")
+	@Column(name = "leave_date")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private Date loginTime;
-
-	@Column(name = "logout_time")
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private Date logoutTime;
+	private Date leaveDate;
 
 	@Column(name = "leave_applied", columnDefinition = "TINYINT(1)")
 	private Boolean leaveApplied;
 
 	@ManyToOne
-	@JoinColumn(name = "leave_status_id", referencedColumnName = "status_id", columnDefinition = "default 3")
+	@JoinColumn(name = "leave_status_id", referencedColumnName = "status_id", columnDefinition = "int default 3")
 	private LeaveStatusEntity leaveStatus;
 
 	@ManyToOne
 	@JoinColumn(name = "employee_id", referencedColumnName = "emp_id")
-	@JsonIgnore
 	private EmployeeEntity employee;
 
-	// @ManyToOne
-	// @JoinColumn(name = "manager_id", referencedColumnName = "manager_id")
-	// private ManagerEntity manager;
+	@Column(name = "leave_type")
+	private String leaveType;
 
 	@Column(name = "leave_cancelled")
 	private Boolean leaveCancelled;
@@ -57,22 +51,6 @@ public class LeaveHistoryEntity {
 
 	public void setLeaveId(Integer leaveId) {
 		this.leaveId = leaveId;
-	}
-
-	public Date getLoginTime() {
-		return loginTime;
-	}
-
-	public void setLoginTime(Date loginTime) {
-		this.loginTime = loginTime;
-	}
-
-	public Date getLogoutTime() {
-		return logoutTime;
-	}
-
-	public void setLogoutTime(Date logoutTime) {
-		this.logoutTime = logoutTime;
 	}
 
 	public LeaveStatusEntity getLeaveStatus() {
@@ -94,13 +72,15 @@ public class LeaveHistoryEntity {
 	public void setLeaveApplied(Boolean leaveApplied) {
 		this.leaveApplied = leaveApplied;
 	}
+	
+	public String getLeaveType() {
+		return leaveType;
+	}
 
-	// public ManagerEntity getManager() {
-	// return manager;
-	// }
-	// public void setManager(ManagerEntity manager) {
-	// this.manager = manager;
-	// }
+	public void setLeaveType(String leaveType) {
+		this.leaveType = leaveType;
+	}
+
 	public Boolean getLeaveCancelled() {
 		return leaveCancelled;
 	}
@@ -111,6 +91,14 @@ public class LeaveHistoryEntity {
 
 	public void setEmployee(EmployeeEntity employee) {
 		this.employee = employee;
+	}
+
+	public Date getLeaveDate() {
+		return leaveDate;
+	}
+
+	public void setLeaveDate(Date leaveDate) {
+		this.leaveDate = leaveDate;
 	}
 
 }

@@ -1,10 +1,8 @@
 package com.example.demo.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpStatus;
+import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,4 +30,9 @@ public class LoginController {
 	public String getEmployeeDetails(@RequestParam String employeeUserName, @RequestParam String employeePassword) {
 		return loginService.getEmployeeDetails(employeeUserName, employeePassword);
 	}
+	
+	@GetMapping(value="/logout")  
+    public String logout() {  
+        return loginService.logout();
+     }  
 }

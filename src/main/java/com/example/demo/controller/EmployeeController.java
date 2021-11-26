@@ -22,7 +22,7 @@ public class EmployeeController {
 		this.employeeService = employeeService;
 	}
 
-	@GetMapping(value = "/getEmployee/{id}")
+	@GetMapping(value = "/employees/{id}")
 	public Employee getEmployee(@PathVariable int id) {
 		Employee employee = employeeService.getEmployeeById(id);
 		return employee;

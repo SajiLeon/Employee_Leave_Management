@@ -9,4 +9,6 @@ public interface LoginService {
 	public EmployeeEntity addEmployee(EmployeeEntity employee);
 
 	public String getEmployeeDetails(String employeeUserName, String employeePassword);
+
+	public String logout();
 }
