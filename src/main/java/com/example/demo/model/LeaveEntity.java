@@ -14,9 +14,11 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tbl_leave")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class LeaveEntity {
 
 	@Id
@@ -24,9 +26,13 @@ public class LeaveEntity {
 	@Column(name = "leave_id")
 	private Integer leaveId;
 
-	@Column(name = "leave_date")
+	@Column(name = "leave_start_date")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private Date leaveDate;
+	private Date leaveStartDate;
+	
+	@Column(name = "leave_end_date")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date leaveEndDate;
 
 	@Column(name = "leave_applied", columnDefinition = "TINYINT(1)")
 	private Boolean leaveApplied;
@@ -53,6 +59,30 @@ public class LeaveEntity {
 		this.leaveId = leaveId;
 	}
 
+	public Date getLeaveStartDate() {
+		return leaveStartDate;
+	}
+
+	public void setLeaveStartDate(Date leaveStartDate) {
+		this.leaveStartDate = leaveStartDate;
+	}
+
+	public Date getLeaveEndDate() {
+		return leaveEndDate;
+	}
+
+	public void setLeaveEndDate(Date leaveEndDate) {
+		this.leaveEndDate = leaveEndDate;
+	}
+
+	public Boolean getLeaveApplied() {
+		return leaveApplied;
+	}
+
+	public void setLeaveApplied(Boolean leaveApplied) {
+		this.leaveApplied = leaveApplied;
+	}
+
 	public LeaveStatusEntity getLeaveStatus() {
 		return leaveStatus;
 	}
@@ -65,14 +95,10 @@ public class LeaveEntity {
 		return employee;
 	}
 
-	public Boolean getLeaveApplied() {
-		return leaveApplied;
+	public void setEmployee(EmployeeEntity employee) {
+		this.employee = employee;
 	}
 
-	public void setLeaveApplied(Boolean leaveApplied) {
-		this.leaveApplied = leaveApplied;
-	}
-	
 	public String getLeaveType() {
 		return leaveType;
 	}
@@ -87,18 +113,6 @@ public class LeaveEntity {
 
 	public void setLeaveCancelled(Boolean leaveCancelled) {
 		this.leaveCancelled = leaveCancelled;
-	}
-
-	public void setEmployee(EmployeeEntity employee) {
-		this.employee = employee;
-	}
-
-	public Date getLeaveDate() {
-		return leaveDate;
-	}
-
-	public void setLeaveDate(Date leaveDate) {
-		this.leaveDate = leaveDate;
 	}
 
 }

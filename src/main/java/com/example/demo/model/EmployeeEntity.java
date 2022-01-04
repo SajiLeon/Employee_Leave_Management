@@ -9,8 +9,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "tbl_employee")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class EmployeeEntity {
 
 	@Id
@@ -34,6 +37,9 @@ public class EmployeeEntity {
 	@ManyToOne
 	@JoinColumn(name = "group_id", referencedColumnName = "group_id")
 	private GroupEntity group;
+	
+	@Column(name = "reporting_manager_id")
+	private Integer employeeManagerId;
 
 	public Integer getEmployeeId() {
 		return employeeId;
@@ -81,6 +87,14 @@ public class EmployeeEntity {
 
 	public void setGroup(GroupEntity group) {
 		this.group = group;
+	}
+
+	public Integer getEmployeeManagerId() {
+		return employeeManagerId;
+	}
+
+	public void setEmployeeManagerId(Integer employeeManagerId) {
+		this.employeeManagerId = employeeManagerId;
 	}
 
 }

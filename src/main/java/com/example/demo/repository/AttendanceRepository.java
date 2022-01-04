@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.model.AttendanceEntity;
 
-@Repository("attendanceRepository")
+@Repository
 public interface AttendanceRepository extends JpaRepository<AttendanceEntity, Integer>{
 
 	@Transactional

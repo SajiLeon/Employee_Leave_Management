@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.model.Employee;
 import com.example.demo.model.EmployeeEntity;
 
-@Repository("loginRepository")
+@Repository
 public interface LoginRepository extends JpaRepository<EmployeeEntity, Employee> {
 	public List<EmployeeEntity> findByEmployeeUserNameAndEmployeePassword(String employeeUserName,
 			String EmployeePassword);

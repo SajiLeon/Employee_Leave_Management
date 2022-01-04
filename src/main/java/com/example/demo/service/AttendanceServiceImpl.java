@@ -3,16 +3,20 @@ package com.example.demo.service;
 import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.AttendanceEntity;
 import com.example.demo.repository.AttendanceRepository;
 
-@Service("attendanceService")
+@Service
 public class AttendanceServiceImpl implements AttendanceService{
 	
-	@Autowired
-	public AttendanceRepository attendanceRepository;
+	private AttendanceRepository attendanceRepository;
+	
+	public AttendanceServiceImpl(AttendanceRepository attendanceRepository){
+		this.attendanceRepository = attendanceRepository;
+	}
 
 	@Override
 	public AttendanceEntity addAttendance(AttendanceEntity attendance, Integer employeeId) {

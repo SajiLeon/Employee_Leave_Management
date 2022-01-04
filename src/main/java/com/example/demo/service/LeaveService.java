@@ -8,10 +8,12 @@ import com.example.demo.model.LeaveEntity;
 
 public interface LeaveService {
 
-	public LeaveEntity applyLeave(LeaveEntity leave);
+	public LeaveEntity applyLeave(LeaveEntity leave, Integer employeeId);
 
-	public void updateLeave(Integer managerId, Integer statusId, Integer employeeId, Integer leaveId);
+	public void updateLeave(Integer statusId, Integer leaveId);
 
 	public List<LeaveEntity> getLeaveStatus(Integer employeeId);
+
+	public List<LeaveEntity> getApprovalLeaves(Integer employeeId);
 
 }

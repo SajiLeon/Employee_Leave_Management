@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.model.EmployeeEntity;
 import com.example.demo.model.GroupEntity;
 
-@Repository("groupRepository")
+@Repository
 public interface GroupRepository extends JpaRepository<GroupEntity, Integer> {
 
 }

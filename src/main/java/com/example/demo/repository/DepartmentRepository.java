@@ -6,8 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.model.DepartmentEntity;
 
-@Component
-@Repository("departmentRepository")
+@Repository
 public interface DepartmentRepository extends JpaRepository<DepartmentEntity, Integer> {
 
 }

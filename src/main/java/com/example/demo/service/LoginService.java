@@ -10,5 +10,5 @@ public interface LoginService {
 
 	public String getEmployeeDetails(String employeeUserName, String employeePassword);
 
-	public String logout();
+	public String logout(Integer employeeId);
 }

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.model.LeaveStatusEntity;
 
-@Repository("statusRepository")
+@Repository
 public interface StatusRepository extends JpaRepository<LeaveStatusEntity, Integer> {
 
 }

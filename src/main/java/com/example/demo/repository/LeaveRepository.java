@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.model.LeaveEntity;
 
-@Repository("leaveRepository")
+@Repository
 public interface LeaveRepository extends JpaRepository<LeaveEntity, Object> {
 
 	@Query("FROM LeaveEntity l where l.employee.employeeId=:employeeId")
@@ -36,6 +36,15 @@ public interface LeaveRepository extends JpaRepository<LeaveEntity, Object> {
 	@Transactional
 	@Modifying
 	@Query("update LeaveEntity l set l.leaveCancelled=:value where l.leaveId=:leaveId")
-	void updateLeaveCancellation(Integer value, Integer leaveId);
+	void updateLeaveCancellation(@Param("value") Boolean value, @Param("leaveId") Integer leaveId);
+
+	@Query("FROM LeaveEntity l where l.employee.employeeManagerId=:employeeId")
+	List<LeaveEntity> findByManagerId(@Param("employeeId") Integer employeeId);
+
+	@Query("FROM LeaveEntity l where l.employee.employeeManagerId=:employeeId")
+	List<LeaveEntity> getProjectManagerDetails(@Param("employeeId") Integer employeeId);
+
+	@Query("FROM LeaveEntity l where l.employee.employeeId=:employeeId")
+	List<LeaveEntity> getLeaveStatusByEmployeeId(@Param("employeeId") Integer employeeId);
 
 }
